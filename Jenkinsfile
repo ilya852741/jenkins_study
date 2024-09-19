@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        parameterizedCron('''*/5 * * * * %scenario='' ''')
+        parameterizedCron('''*/5 * * * * ''')
     }
     parameters {
         choice(
