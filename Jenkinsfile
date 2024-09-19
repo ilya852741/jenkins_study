@@ -34,7 +34,7 @@ pipeline {
             script {
                 // if (currentBuild.getCause(hudson.model.Cause$UserCause)) {
                     // echo "Build was triggered by user, scenario = $params.scenario"
-                echo "Build was triggered by ${currentBuild.getCause(hudson.model.Cause$UserCause)}"
+                echo "Build was triggered by ${currentBuild.rawBuild.getCause(hudson.model.Cause$UserCause)}"
                 // } else {
                   // echo "Build was triggered NOT by user, scenario = $params.scenario"
                 // }
