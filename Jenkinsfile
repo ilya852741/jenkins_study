@@ -32,6 +32,19 @@ pipeline {
     post {
         always {
             script {
+
+                echo "BUILD CAUSES START"
+                echo "${currentBuild.getBuildCauses()}" //Always returns full Cause
+                echo "${currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')}" // Only returns for branch events
+                echo "${currentBuild.getBuildCauses('hudson.triggers.SCMTrigger$SCMTriggerCause')}" // Only returns SCM Trigger
+                echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')}"  // Only returns if user initiates via Jenkins GUI
+          
+                def GitPushCause = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
+                def UserCause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
+
+                echo "BUILD CAUSES UserCause = $UserCause"
+                echo "BUILD CAUSES END"
+                
                 // if (currentBuild.getCause(hudson.model.Cause$UserCause)) {
                     // echo "Build was triggered by user, scenario = $params.scenario"
                 echo "Build was triggered by ${currentBuild.getBuildCauses(hudson.model.Cause$UserIdCause)}"
