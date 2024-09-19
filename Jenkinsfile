@@ -38,6 +38,7 @@ pipeline {
                 echo "${currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')}" // Only returns for branch events
                 echo "${currentBuild.getBuildCauses('hudson.triggers.SCMTrigger$SCMTriggerCause')}" // Only returns SCM Trigger
                 echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')}"  // Only returns if user initiates via Jenkins GUI
+                echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"  // Only returns if user initiates via Jenkins GUI
           
                 def GitPushCause = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
                 def UserCause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
